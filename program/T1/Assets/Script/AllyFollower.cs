@@ -20,6 +20,7 @@ public class AllyFollower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GetComponent<AllyHealth>().AllyDie) return;
         if (activator != null && activator.isActivated && player != null)
         {
             agent.SetDestination(player.transform.position);

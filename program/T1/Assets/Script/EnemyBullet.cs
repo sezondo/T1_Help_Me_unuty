@@ -28,6 +28,7 @@ public class EnemyBullet : MonoBehaviour
             other.GetComponent<AllyHealth>()?.TakeDamage(damage);
         }
         
+        
 
         Destroy(gameObject);
     }

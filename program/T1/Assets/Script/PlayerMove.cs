@@ -35,11 +35,11 @@ public class PlayerMove : MonoBehaviour
         {
         transform.rotation = Quaternion.LookRotation(moveDir);
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
-        GetComponent<Animator>().SetBool("bMove", true);
+        //GetComponent<Animator>().SetBool("bMove", true);
         }
         else
         {
-        GetComponent<Animator>().SetBool("bMove", false);
+        //GetComponent<Animator>().SetBool("bMove", false);
         }
         
         

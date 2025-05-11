@@ -6,11 +6,13 @@ public class AllyShooter : MonoBehaviour
     public Transform firePoint;
     public float attackCooldown = 1.5f;
     public float fireRange = 25f;
-    public GameObject fireEffectPrefab;
+    //public GameObject fireEffectPrefab;
 
     private AllyActivator activator;
     private float lastAttackTime = 0f;
     private Transform currentTarget;
+    public AudioClip ShooterSound;
+    public AudioSource ShooterSoundSource;
 
     void Start()
     {
@@ -19,6 +21,9 @@ public class AllyShooter : MonoBehaviour
 
     void Update()
     {
+        if(GetComponent<AllyHealth>().AllyDie) return;
+
+        //GetComponent<Animator>().SetBool("RobotShoot", false);
         if (activator != null && activator.isActivated)
         {
             currentTarget = FindNearestEnemyInRange(fireRange);
@@ -36,8 +41,11 @@ public class AllyShooter : MonoBehaviour
 
                 if (Time.time - lastAttackTime >= attackCooldown)
                 {
+                    ShooterSoundSource.PlayOneShot(ShooterSound); 
+                    GetComponent<Animator>().SetBool("RobotShoot", true);
                     foreach (var fp in GetComponentsInChildren<Shoot>())
                     {
+                        
                         fp.Fire();
                     }
                     lastAttackTime = Time.time;

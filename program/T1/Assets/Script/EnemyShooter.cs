@@ -7,6 +7,8 @@ public class EnemyShooter : MonoBehaviour
 
     private float lastFireTime = 0f;
     private GameObject target;
+    public AudioClip ShooterSound;
+    public AudioSource ShooterSoundSource;
 
     void Update()
     {
@@ -16,6 +18,7 @@ public class EnemyShooter : MonoBehaviour
             float dist = Vector3.Distance(transform.position, target.transform.position);
             if (dist <= fireRange && Time.time - lastFireTime >= fireCooldown)
             {
+                ShooterSoundSource.PlayOneShot(ShooterSound); 
                 foreach (var fp in GetComponentsInChildren<Shoot>())
                     {
                         fp.Fire();

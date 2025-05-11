@@ -27,8 +27,8 @@ public class AllyBullet : MonoBehaviour
             {
                 eh.Damage(damage);
             }
-            Destroy(gameObject); // 적에 맞으면 사라짐
         }
+        Destroy(gameObject);
     }
     
 }
