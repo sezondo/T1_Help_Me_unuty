@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class EnemyShooter : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    public Transform firePoint;
     public float fireCooldown = 2f;
     public float fireRange = 25f;
 
@@ -18,17 +16,16 @@ public class EnemyShooter : MonoBehaviour
             float dist = Vector3.Distance(transform.position, target.transform.position);
             if (dist <= fireRange && Time.time - lastFireTime >= fireCooldown)
             {
-                Shoot(target.transform);
+                foreach (var fp in GetComponentsInChildren<Shoot>())
+                    {
+                        fp.Fire();
+                    }
                 lastFireTime = Time.time;
             }
         }
     }
 
-    void Shoot(Transform target)
-    {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-    }
-
+    
     GameObject FindNearestTarget()
     {
         GameObject[] possibleTargets = GameObject.FindGameObjectsWithTag("Player"); // 또는 "Ally" 로 바꾸면 npc 공격 가능

@@ -36,28 +36,31 @@ public class AllyShooter : MonoBehaviour
 
                 if (Time.time - lastAttackTime >= attackCooldown)
                 {
-                    Shoot();
+                    foreach (var fp in GetComponentsInChildren<Shoot>())
+                    {
+                        fp.Fire();
+                    }
                     lastAttackTime = Time.time;
                 }
             }
         }
     }
-
+/*
     void Shoot()
     {
-        /* 이펙트 생성
+         이펙트 생성
         if (fireEffectPrefab != null)
         {
             GameObject effect = Instantiate(fireEffectPrefab, firePoint.position, Quaternion.identity);
             Destroy(effect, 0.3f);
         }
-        */
+        
         
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);//총알생성성
         
 
     }
-
+*/
     Transform FindNearestEnemyInRange(float range)
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");

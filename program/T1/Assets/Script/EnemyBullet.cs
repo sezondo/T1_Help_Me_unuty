@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    private float speed = 20f;
-    private float lifeTime = 5f;
-    private int damage = 20;
+    public float speed = 20f;
+    public float lifeTime = 5f;
+    public int damage = 20;
 
     void Start()
     {
