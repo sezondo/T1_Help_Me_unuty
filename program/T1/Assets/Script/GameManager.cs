@@ -1,5 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class GameData
+{
+    public static float bestTime = 0f;
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -39,17 +45,18 @@ public class GameManager : MonoBehaviour
 
     public void EndGame(){
 
-        isGameover = true;
-        
-
         float bestTime = PlayerPrefs.GetFloat("BestTime",0);
 
-        if (bestTime == 0f || surviveTime < bestTime)
+        if (bestTime == 0f || surviveTime > bestTime)
         {
             bestTime = surviveTime;
             PlayerPrefs.SetFloat("BestTime", bestTime);
         }
-        textRecord.text = "Best Time: " + (int)bestTime;
+        //textRecord.text = "Best Time: " + (int)bestTime;
+
+        GameData.bestTime = bestTime;
+
+        SceneManager.LoadScene("EndScene");
 
     }
 }

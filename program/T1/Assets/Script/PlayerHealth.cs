@@ -10,6 +10,9 @@ public class PlayerHealth : MonoBehaviour
     public RawImage imgBar;
     public bool playerDie;
 
+    public AudioClip PlayerDieSound;
+    public AudioSource PlayerDieSoundSource;
+
 
 
 
@@ -37,6 +40,13 @@ public class PlayerHealth : MonoBehaviour
         }
         bDamage = true;
         hp -= amount;
+        if (hp <= 0)
+        {
+            hp = 0;
+            GetComponent<Animator>().SetBool("PlayerDie", true);
+            PlayerDieSoundSource.PlayOneShot(PlayerDieSound); 
+            Destroy(gameObject,2);
+        }
         imgBar.transform.localScale = new Vector3(hp/100.0f,1,1);
 
    
@@ -70,5 +80,13 @@ public class PlayerHealth : MonoBehaviour
         
         if (hp <= 0)playerDie = true;
         
+        if (playerDie)Die();
+        
+    }
+
+    public void Die(){
+
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
+        gameManager.EndGame();
     }
 }

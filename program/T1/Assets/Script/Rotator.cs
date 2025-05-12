@@ -1,21 +1,20 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class SceneMove : MonoBehaviour
+public class Rotator : MonoBehaviour
 {
+
+    public float speed = 60;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
     }
 
-    public void Change(int i){
-        SceneManager.LoadScene(i);
-    }
-
     // Update is called once per frame
     void Update()
     {
         
+        transform.Rotate(0f, speed * Time.deltaTime, 0f);
     }
 }

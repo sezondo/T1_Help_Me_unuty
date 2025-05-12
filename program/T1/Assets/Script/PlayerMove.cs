@@ -14,11 +14,11 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+        //float h = Input.GetAxisRaw("Horizontal");
+        //float v = Input.GetAxisRaw("Vertical");
 
-        //float h = joy.Horizontal;
-        //float v = joy.Vertical;
+        float h = joy.Horizontal;
+        float v = joy.Vertical;
 
 
 

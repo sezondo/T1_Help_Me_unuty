@@ -30,8 +30,8 @@ public class EnemyHealth : MonoBehaviour
 
             GetComponent<Animator>().SetBool("EnemyDie", true);
 
-            Destroy(gameObject,2);
-            GameObject.Find("GameManager").GetComponent<Spawn>().count--;
+            Destroy(gameObject,1);
+            //GameObject.Find("GameManager").GetComponent<Spawn>().count--;
         }
         
     }

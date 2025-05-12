@@ -19,6 +19,11 @@ public class AllyBullet : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Ally"))
+        {
+            return;
+        }
+
         Debug.Log("총알 충돌 대상: " + other.name + ", 태그: " + other.tag);
         if (other.CompareTag("Enemy"))
         {

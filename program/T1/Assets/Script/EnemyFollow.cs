@@ -7,9 +7,8 @@ public class EnemyFollow : MonoBehaviour
     private GameObject player;
     private PlayerHealth playerSave;
     private EnemyHealth enemyHealth;
-    
     private NavMeshAgent agent;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,15 +18,15 @@ public class EnemyFollow : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         enemyHealth = GetComponent<EnemyHealth>();
         //Vector3 velocity = GetComponent<Rigidbody>().linearVelocity;
-
+        
     }
+    
 
     // Update is called once per frame
     void Update()
     {
         
-        
-        
+
         if (player != null && !playerSave.playerDie && !enemyHealth.enemyDie)
         {
             agent.SetDestination(player.transform.position);

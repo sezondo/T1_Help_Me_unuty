@@ -21,13 +21,14 @@ public class AllyHealth : MonoBehaviour
         if (hp <= 0)
         {
             hp = 0;
+            //GameObject.Find("GameManager").GetComponent<Spawn>().count--;
         }
         
         if (hp <= 0f)
         {
             AllyDie = true;
             GetComponent<Animator>().SetBool("RobotDie", true);
-            Destroy(gameObject, 3);
+            Destroy(gameObject, 1);
         }
         if (hp >= 0f)
         {

@@ -18,6 +18,12 @@ public class EnemyBullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Enemy"))
+        {
+            return;
+        }
+
+
         Debug.Log("총알 충돌 대상: " + other.name + ", 태그: " + other.tag);
         if (other.CompareTag("Player"))
         {
