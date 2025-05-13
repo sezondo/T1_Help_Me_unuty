@@ -43,7 +43,7 @@ public class AllyShooter : MonoBehaviour
                 {
                     ShooterSoundSource.PlayOneShot(ShooterSound); 
                     GetComponent<Animator>().SetBool("RobotShoot", true);
-                    foreach (var fp in GetComponentsInChildren<Shoot>())
+                    foreach (var fp in GetComponentsInChildren<Shoot>()) // 이 오브젝트 자신과 자식 오브젝트들에서 타입 Shoot 컴포넌트 모두 찾아서 배열로 반환환
                     {
                         
                         fp.Fire();

@@ -39,7 +39,7 @@ public class EnemyAttack : MonoBehaviour
             p.GetComponent<PlayerHealth>().Damage(50);
             if (p.GetComponent<PlayerHealth>().hp <= 0)
             {
-                GetComponent<Animator>().SetTrigger("PlayerDeath");
+                GetComponent<Animator>().SetTrigger("PlayerDeath"); // 이거 객체 지향 원칙 어김 이라믄 안대
             }
         }
     }

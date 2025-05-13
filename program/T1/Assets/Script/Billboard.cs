@@ -9,7 +9,7 @@ public class Billboard : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void LateUpdate() // 업데이트로 하니 반응이 느려서 레이트로 함
     {
 
         transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
